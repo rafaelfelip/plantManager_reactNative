@@ -1,53 +1,48 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { 
   SafeAreaView, 
   Text, 
   Image, 
   TouchableOpacity, 
-  StyleSheet 
+  StyleSheet,
+  Dimensions 
 } from 'react-native';
 
 import wateringImg from '../assets/watering.png';
 import colors from '../styles/colors';
-import {Button} from '../components/button';
 
 export function Welcome() {
-  const [visible, setVisible] = useState(false);
-
-  function handleVisibility(){
-    setVisible(true)
-  }
-
   return ( 
     <SafeAreaView 
-    style={styles.container}
-    >
-
+    style={styles.container}>
       <Text 
-      style={styles.title}
-      >
+      style={styles.title}>
       {/* para dar quebra de linhas */}
         Gerencie {'\n'}  
         suas plantas {'\n'}
         de forma fácil
       </Text>
-    {
-      visible &&
+   
       <Image 
-      source={wateringImg} 
-      style={styles.image}
+       source={wateringImg}
+       style={styles.image} 
+       resizeMode='contain'
       />
-    }
-      <Text 
-        style={styles.subTitle}
-        >
+  
+      <Text style={styles.subTitle}>
           Não esqeça mais de regar suas plantas. 
           Nós cuidamos de lembrar você sempre que precisar.
       </Text>
 
-      <Button title= '>' />
-      
+      <TouchableOpacity 
+    style={styles.button} 
+    activeOpacity={0.6}>
 
+        <Text style={styles.textButton}>
+         >
+        </Text>
+
+      </TouchableOpacity>  
     </SafeAreaView>
   )
 }
@@ -56,7 +51,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     
   },
   title: {
@@ -73,9 +68,23 @@ const styles = StyleSheet.create({
     color: colors.heading,
   },
   image: {
-    width: 292,
-    height: 284,
+    // para responsividade não cravar um tamanho correto olha na image prop risizeMode
+    height: Dimensions.get('window').width * 0.7,  
   },
+  button: {
+    backgroundColor: colors.green,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 16,
+    marginBottom: 50,
+    marginTop: 10,
+    height: 56,
+    width: 56,
+  },
+  textButton: {
+    color: colors.white,
+    fontSize: 24,
+  }
   }) 
 
 
