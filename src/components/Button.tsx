@@ -23,7 +23,14 @@ export function Button(){
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.green,
-    height: 50,
+    height: 56,
     borderRadius: 16,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  text: {
+    fontSize: 16,
+    color: colors.white,
+    fontFamily: fonts.heading,
   }
 });
